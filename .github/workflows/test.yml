@@ -1,4 +1,4 @@
-name: Android Testing Workflow
+name:  Testing Workflow
 
 # Step 1: Choose the branch or branches you want to run this workflow
 on:

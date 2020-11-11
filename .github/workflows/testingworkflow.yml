@@ -42,3 +42,14 @@ jobs:
       # Step 6: Assemble debug test apk to send to firebase test lab
       - name: Assemble Debug Test APK
         run: ./gradlew assembleDebugAndroidTest
+
+android-pixel-4:
+  type: instrumentation
+  # Specify the path to the debug and test apks generated early
+  app: app/build/outputs/apk/staging/debug/app-staging-debug.apk
+  test: app/build/outputs/apk/androidTest/staging/debug/app-staging-debug-androidTest.apk
+  device:
+    - model: flame
+      version: 29
+      locale: 'en'
+      orientation: portrait

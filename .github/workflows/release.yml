@@ -44,8 +44,7 @@ jobs:
       # Step 6: Assemble debug test apk to send to firebase test lab
       - name: Assemble Debug Test APK
         run: ./gradlew assembleDebugAndroidTest
-
-    build:
+  build:
       name: Generate APK
       runs-on: ubuntu-latest
       steps:

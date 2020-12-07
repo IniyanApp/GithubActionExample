@@ -37,10 +37,10 @@ jobs:
 
       - name: Running build command
           # Run your own gradle command to generate build.
-          run: ./gradlew bundleRelease
-            - name: Uploading build
-              uses: actions/upload-artifact@v2
-              with:
+        run: ./gradlew bundleRelease
+      - name: Uploading build
+        uses: actions/upload-artifact@v2
+        with:
                 name: bundle
                 path: app/build/outputs/bundle/release/app-release.aab
 

@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     name: Building release app
-    runs-on: ubuntu-latest
+    runs-on: Ubuntu-20.04
     steps:
       - name: Checking out branch
         uses: actions/checkout@v2

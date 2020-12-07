@@ -2,7 +2,18 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
+  //  id "org.sonarqube" version "3.0"
 }
+
+//description = 'Example of SonarQube Scanner for Gradle Usage'
+//version = '1.0'
+//
+//sonarqube {
+//    properties {
+//        property 'sonar.projectName', 'IniyanApp_GithubActionExample'
+//    }
+//}
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -30,6 +41,9 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+
+
 }
 
 dependencies {

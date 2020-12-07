@@ -42,6 +42,7 @@ jobs:
       - name: Assemble Debug Test APK
         run: ./gradlew assembleDebugAndroidTest
 
+
   build:
     name: Generate APK
     runs-on: ubuntu-latest

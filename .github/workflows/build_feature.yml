@@ -1,4 +1,4 @@
-name: Android CICD 
+name: Android Feature
 on: 
   push:
     branches: [ master, release/* ]

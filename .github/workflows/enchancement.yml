@@ -43,9 +43,9 @@ jobs:
           name: bundle
 
       - name: Uplaoding to IAS
-          id: ias
-          uses: sagar-viradiya/internal-app-sharing-action@v1.1.0
-          with:
+        id: ias
+        uses: sagar-viradiya/internal-app-sharing-action@v1.1.0
+        with:
             # Your service account JSON GitHub secret
             serviceAccountJsonPlainText: ${{ secrets.servicesecret }}
             # Your package name
@@ -53,8 +53,8 @@ jobs:
             aabFilePath: 'app-release.aab'
 
       - name: Uploading to test track
-          uses: r0adkll/upload-google-play@v1
-          with:
+        uses: r0adkll/upload-google-play@v1
+        with:
             # Your service account JSON GitHub secret
             serviceAccountJsonPlainText: ${{ secrets.servicesecret }}
             # Your package name
@@ -63,8 +63,8 @@ jobs:
             track: internal
 
       - name: Sharing on slack
-          uses: rtCamp/action-slack-notify@v2.1.0
-          env:
+        uses: rtCamp/action-slack-notify@v2.1.0
+        env:
             # Your slack webhook GitHub secret
             SLACK_WEBHOOK: ${{ secrets.slack }}
             # Slack channel where you want to notify

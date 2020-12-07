@@ -1,9 +1,9 @@
 name: Android CICD 
 on: 
   push:
-    branches: [ master ]
+    branches: [ master, release/* ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, release/* ]
 
 jobs:
   build:
@@ -34,7 +34,23 @@ jobs:
         with: 
           name: App
           path: app/build/outputs/apk/debug/app-debug.apk
-      
+
+      - name: Running build command
+          # Run your own gradle command to generate build.
+          run: ./gradlew bundleRelease
+            - name: Uploading build
+              uses: actions/upload-artifact@v2
+              with:
+                name: bundle
+                path: app/build/outputs/bundle/release/app-release.aab
+
+
+      - name: Decode google-services.json
+        env:
+          FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+        run: echo $FIREBASE_CONFIG > app/google-services.json
+
+
       - name: build release 
         run: ./gradlew assembleRelease
       - name: upload artifact to Firebase App Distribution

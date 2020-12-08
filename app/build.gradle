@@ -2,18 +2,10 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
-    id "org.sonarqube" version "3.0"
+
 }
 
-description = 'Example of SonarQube Scanner for Gradle Usage'
-version = '1.0'
 
-sonarqube {
-    properties {
-        property 'sonar.projectName', 'IniyanApp_GithubActionExample'
-        property 'sonar.host.url', 'http://localhost:9000'
-    }
-}
 
 android {
     compileSdkVersion 30
@@ -25,12 +17,20 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+         testOptions {
+            unitTests.returnDefaultValues = true
+        }
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+        debug {
+            testCoverageEnabled = true
+            resValue("string", "ztm_api_key", System.getenv("ZTM_API_KEY").toString())
+        }
         release {
+            resValue("string", "ztm_api_key", System.getenv("ZTM_API_KEY").toString())
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -65,5 +65,11 @@ dependencies {
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:26.1.1')
 
+    testImplementation 'org.mockito:mockito-core:2.23.0'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+
+    androidTestImplementation 'org.mockito:mockito-android:2.23.0'
 
 }
+
+

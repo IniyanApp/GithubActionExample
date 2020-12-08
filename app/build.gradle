@@ -2,12 +2,19 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
-
 }
 
 
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/home/iniyanm/Documents/demo.jks')
+            storePassword 'iniyan@123'
+            keyAlias 'iniyan'
+            keyPassword 'iniyan@123'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
@@ -17,22 +24,17 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-         testOptions {
-            unitTests.returnDefaultValues = true
-        }
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        debug {
-            testCoverageEnabled = true
-            resValue("string", "ztm_api_key", System.getenv("ZTM_API_KEY").toString())
-        }
+
         release {
-            resValue("string", "ztm_api_key", System.getenv("ZTM_API_KEY").toString())
-            minifyEnabled false
+          //  resValue("string", "ztm_api_key", System.getenv("ZTM_API_KEY").toString())
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
         }
     }
     compileOptions {

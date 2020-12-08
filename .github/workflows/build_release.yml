@@ -4,9 +4,9 @@ name: Build Release
 # Whenever A Code Pushed into master Branch
 on:
   push:
-    branches: [ master ]
+    branches: [ master ,  * , rel* ]
   pull_request:
-    branches: [ master ]
+    branches: [ master , * , rel* ]
 
 jobs:
   testing:

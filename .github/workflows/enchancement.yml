@@ -4,7 +4,7 @@ name: Build, Upload to IAS and share on slack.
 # Whenever A Code Pushed into master Branch
 on:
   push:
-    branches: [ master ]
+    branches: [ master]
   pull_request:
     branches: [ master ]
 

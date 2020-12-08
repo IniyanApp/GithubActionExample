@@ -9,7 +9,7 @@ on:
 jobs:
   slackNotification:
     name: Slack Notification
-    runs-on: ubuntu-latest
+    runs-on: Ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Slack Notification

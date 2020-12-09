@@ -4,9 +4,9 @@ name: Build Complete
 # Whenever A Code Pushed into master Branch
 on:
   push:
-    branches: [ master  , rel* ]
+    branches: [ master ]
   pull_request:
-    branches: [ master , rel* ]
+    branches: [ master ]
 
 jobs:
   build:

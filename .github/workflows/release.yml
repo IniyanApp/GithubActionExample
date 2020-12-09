@@ -1,4 +1,4 @@
-name: Build Release
+name: Build Complete
 
 # Step 1: Choose the branch or branches you want to run this workflow
 # Whenever A Code Pushed into master Branch

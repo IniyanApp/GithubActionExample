@@ -10,7 +10,7 @@ on:
 
 jobs:
   testing:
-    name: Android Build
+    name: Android Build Complete
 
     runs-on: Ubuntu-20.04
 

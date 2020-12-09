@@ -1,7 +1,5 @@
-name: Build Complete
+name: Test Release Build
 
-# Step 1: Choose the branch or branches you want to run this workflow
-# Whenever A Code Pushed into master Branch
 on:
   push:
     branches: [ master ]
@@ -20,22 +18,21 @@ jobs:
         with:
           java-version: 1.8
 
-      - uses: r0adkll/sign-android-release@v1
-          name: Sign app APK
-          # ID used to access action output
-          id: sign_app
-          with:
-            releaseDirectory: app/build/outputs/apk/release
-            signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-            alias: ${{ secrets.ALIAS }}
-            keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-            keyPassword: ${{ secrets.KEY_PASSWORD }}
-          env:
-            // override default build-tools version (29.0.3) -- optional
-            BUILD_TOOLS_VERSION: "30.0.2"
-
-      # Example use of `signedReleaseFile` output -- not needed
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Signed app bundle
-          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+#      - uses: r0adkll/sign-android-release@v1
+#          name: Sign app APK
+#          # ID used to access action output
+#          id: sign_app
+#          with:
+#            releaseDirectory: app/build/outputs/apk/release
+#            signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+#            alias: ${{ secrets.ALIAS }}
+#            keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+#            keyPassword: ${{ secrets.KEY_PASSWORD }}
+#          env:
+#            BUILD_TOOLS_VERSION: 29.0.3
+#
+#      # Example use of `signedReleaseFile` output -- not needed
+#      - uses: actions/upload-artifact@v2
+#         with:
+#          name: Signed app bundle
+#          path: ${{steps.sign_app.outputs.signedReleaseFile}}

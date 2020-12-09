@@ -9,10 +9,9 @@ on:
     branches: [ master , rel* ]
 
 jobs:
-  testing:
-    name: Android Build Complete
-
-    runs-on: Ubuntu-20.04
+  build:
+    name: Release Implement
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v1

@@ -1,10 +1,8 @@
 name: Slack Bot Message PR Status
 
 on:
-  push:
-    branches: [ master  , rel* ]
   pull_request:
-    branches: [ master , rel* ]
+    branches: [ master ]
 
 jobs:
   slack :

@@ -5,9 +5,13 @@ plugins {
     id "org.sonarqube" version "3.1.1"
 }
 
+description = 'Example of SonarQube Scanner for Gradle Usage'
+version = '1.0'
+
 
 sonarqube {
     properties {
+        property 'sonar.projectName', 'Example of SonarQube Scanner for Gradle Usage'
         property "sonar.projectKey", "IniyanApp_GithubActionExample"
         property "sonar.organization", "iniyanapp"
         property "sonar.host.url", "https://sonarcloud.io"
@@ -83,3 +87,15 @@ dependencies {
 }
 
 
+// In this section you declare where to find the dependencies of your project
+repositories {
+    // Use jcenter for resolving your dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+}
+//
+//jacocoTestReport {
+//    reports {
+//        xml.enabled true
+//    }
+//}

@@ -15,7 +15,7 @@ name: SonarCloud Scan
 #############################
 on:
   push:
-    branches: [ master, feature* ]
+    branches: [ master, sonarqube* ]
   pull_request:
     types: [opened, synchronize, reopened]
 

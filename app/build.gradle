@@ -1,9 +1,38 @@
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
-}
 
+    id "org.sonarqube" version "3.1.1"
+}
+//    id 'jacoco-android'
+sonarqube {
+    properties {
+        property "sonar.projectKey", "IniyanApp_GithubActionExample"
+        property "sonar.organization", "iniyanapp"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.projectVersion", "1.0"
+        property "sonar.exclusions", "robospice/**/*"
+//        property "sonar.host.url", "http://192.168.0.1:9000" // TODO: - Setup your Sonarqube server address
+
+//        property "sonar.sources", "src/main/java"
+//        property "sonar.binaries", "build/intermediates/classes/debug"
+//        property "sonar.java.binaries", "build/intermediates/classes/debug"
+//        property "sonar.tests", "src/test/java, src/androidTest/java"
+//        property "sonar.java.test.binaries", "build/intermediates/classes/debug"
+//
+//        def unit = fileTree(dir: project.projectDir, includes: ['**/*.exec']).files;
+//        def ui = fileTree(dir: project.projectDir, includes: ['**/*.ec']).files;
+//        unit.addAll(ui);
+//        def files = unit.join(", ");
+//
+//        property "sonar.jacoco.reportPaths", files
+//        property "sonar.java.coveragePlugin", "jacoco"
+//        property "sonar.junit.reportsPath", "build/test-results/testDebugUnitTest"
+//        property "sonar.android.lint.report", "build/reports/lint-results.xml"
+    }
+}
 
 
 android {
@@ -33,8 +62,13 @@ android {
         release {
           //  resValue("string", "ztm_api_key", System.getenv("ZTM_API_KEY").toString())
             minifyEnabled true
+            testCoverageEnabled = true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
+        }
+
+        debug {
+            testCoverageEnabled = true
         }
     }
     compileOptions {
@@ -46,8 +80,17 @@ android {
     }
 
 
-
+    testOptions {
+        unitTests.all {
+            jacoco {
+                includeNoLocationClasses = true
+            }
+        }
+    }
 }
+
+
+
 
 dependencies {
 
@@ -72,6 +115,21 @@ dependencies {
 
     androidTestImplementation 'org.mockito:mockito-android:2.23.0'
 
+
+
 }
 
-
+//
+//// TODO: Setup Jacoco version. It's recomended way to exclude conflicts beetwen components
+//
+//jacoco {
+//    toolVersion = "0.7.4.201502262128"
+//}
+//
+//// TODO: Setup jacoco report format. We need xml for Sonarqube
+//
+//jacocoAndroidUnitTestReport {
+//    csv.enabled false
+//    html.enabled false
+//    xml.enabled true
+//}

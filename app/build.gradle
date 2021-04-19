@@ -4,14 +4,9 @@ plugins {
     id 'com.google.gms.google-services'
     id "org.sonarqube" version "3.1.1"
 }
-
-description = 'Example of SonarQube Scanner for Gradle Usage'
-version = '1.0'
-
-
 sonarqube {
     properties {
-        property 'sonar.projectName', 'Example of SonarQube Scanner for Gradle Usage'
+        property 'sonar.projectName', 'SonarQube Scanner for Gradle'
         property "sonar.projectKey", "IniyanApp_GithubActionExample"
         property "sonar.organization", "iniyanapp"
         property "sonar.host.url", "https://sonarcloud.io"
@@ -29,7 +24,6 @@ android {
     }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
-
     defaultConfig {
         applicationId "com.iniyan.githubactionexample"
         minSdkVersion 21
@@ -41,12 +35,10 @@ android {
     }
 
     buildTypes {
-
         release {
           //  resValue("string", "ztm_api_key", System.getenv("ZTM_API_KEY").toString())
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
         }
     }
     compileOptions {
@@ -56,9 +48,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-
-
 }
 
 dependencies {
@@ -75,27 +64,9 @@ dependencies {
     // Add the dependency for the Firebase SDK for Google Analytics
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation 'com.google.firebase:firebase-analytics'
-
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:26.1.1')
-
     testImplementation 'org.mockito:mockito-core:2.23.0'
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
-
     androidTestImplementation 'org.mockito:mockito-android:2.23.0'
-
 }
-
-
-// In this section you declare where to find the dependencies of your project
-repositories {
-    // Use jcenter for resolving your dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
-}
-//
-//jacocoTestReport {
-//    reports {
-//        xml.enabled true
-//    }
-//}

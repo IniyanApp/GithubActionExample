@@ -2,16 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
-    id "org.sonarqube" version "3.1.1"
 }
-sonarqube {
-    properties {
-        property 'sonar.projectName', 'SonarQube Scanner for Gradle'
-        property "sonar.projectKey", "IniyanApp_GithubActionExample"
-        property "sonar.organization", "iniyanapp"
-        property "sonar.host.url", "https://sonarcloud.io"
-    }
-}
+
 
 android {
     signingConfigs {

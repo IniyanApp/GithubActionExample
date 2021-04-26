@@ -19,20 +19,20 @@ jobs:
       - name: Install NDK
         run: echo "y" | sudo /usr/local/lib/android/sdk/tools/bin/sdkmanager --install "ndk;20.0.5594570" --sdk_root=${ANDROID_SDK_ROOT}
 
-  - name: Decode Secrets to Create local properties file
-      env:
-        BASEURL: ${{ secrets.BASEURL }}
-      run: echo BASEURL="$BASEURL" > ./local.properties
-      - run: echo hvsdkAccessKey=${{ secrets.hvsdkAccessKey }} >> local.properties
-      - run: echo hvsdkSecretKey=${{ secrets.hvsdkSecretKey }} >> local.properties
-      - run: echo VkycUserName=${{ secrets.VkycUserName }} >> local.properties
-      - run: echo vkycPassword=${{ secrets.vkycPassword }} >> local.properties
-      - run: echo AWS_MAVEN_URL=${{ secrets.AWS_MAVEN_URL }} >> local.properties
-      - run: echo AWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY }} >> local.properties
-      - run: echo AWS_SECRET_KEY=${{ secrets.AWS_SECRET_KEY }} >> local.properties
-      - run: echo DIGITAP_REPO_URL=${{ secrets.DIGITAP_REPO_URL }} >> local.properties
-      - run: echo DIGITAP_ACCESS_KEY=${{ secrets.DIGITAP_ACCESS_KEY }} >> local.properties
-      - run: echo DIGITAP_SECRET_KEY=${{ secrets.DIGITAP_SECRET_KEY }} >> local.properties
+#       - name: Decode Secrets to Create local properties file
+#         env:
+#           BASEURL: ${{ secrets.BASEURL }}
+#         run: echo BASEURL="$BASEURL" > ./local.properties
+#       - run: echo hvsdkAccessKey=${{ secrets.hvsdkAccessKey }} >> local.properties
+#       - run: echo hvsdkSecretKey=${{ secrets.hvsdkSecretKey }} >> local.properties
+#       - run: echo VkycUserName=${{ secrets.VkycUserName }} >> local.properties
+#       - run: echo vkycPassword=${{ secrets.vkycPassword }} >> local.properties
+#       - run: echo AWS_MAVEN_URL=${{ secrets.AWS_MAVEN_URL }} >> local.properties
+#       - run: echo AWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY }} >> local.properties
+#       - run: echo AWS_SECRET_KEY=${{ secrets.AWS_SECRET_KEY }} >> local.properties
+#       - run: echo DIGITAP_REPO_URL=${{ secrets.DIGITAP_REPO_URL }} >> local.properties
+#       - run: echo DIGITAP_ACCESS_KEY=${{ secrets.DIGITAP_ACCESS_KEY }} >> local.properties
+#       - run: echo DIGITAP_SECRET_KEY=${{ secrets.DIGITAP_SECRET_KEY }} >> local.properties
 
       - name: Restore Cache
         uses: actions/cache@v2

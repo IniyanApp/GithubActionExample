@@ -46,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: bundle
-          path: app/build/outputs/bundle/release/com.iniyan.githubactionexample-1.0.1-release-unsigned.aab
+          path: app/build/outputs/bundle/release/com.iniyan.githubactionexample-1.0.1-release.aab
 
 
       - name: Decode google-services.json

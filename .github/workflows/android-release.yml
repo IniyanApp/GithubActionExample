@@ -51,17 +51,17 @@ jobs:
           name: Application Apk
           path: ${{ github.workspace }}/app/build/outputs/apk/debug/com.iniyan.githubactionexample-1.0.1-debug.apk
 
-
-      ## Build all our Build Types at once ##
-      - name: Build all artifacts
-        id: buildAllApks
-        uses: eskatos/gradle-command-action@v1.3.3
-        with:
-           gradle-version: current
-           wrapper-cache-enabled: true
-           dependencies-cache-enabled: true
-           configuration-cache-enabled: true
-           arguments: assembleAndroidDebug
+#
+#      ## Build all our Build Types at once ##
+#      - name: Build all artifacts
+#        id: buildAllApks
+#        uses: eskatos/gradle-command-action@v1.3.3
+#        with:
+#           gradle-version: current
+#           wrapper-cache-enabled: true
+#           dependencies-cache-enabled: true
+#           configuration-cache-enabled: true
+#           arguments: assembleAndroidDebug
 
 #
 #

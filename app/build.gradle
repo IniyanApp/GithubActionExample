@@ -36,6 +36,12 @@ android {
     }
 
     buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+//            applicationIdSuffix '.debug'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
           //  resValue("string", "ztm_api_key", System.getenv("ZTM_API_KEY").toString())
             minifyEnabled true
@@ -48,6 +54,12 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    flavorDimensions "store"
+    productFlavors {
+        android {
+            dimension "store"
+        }
     }
 }
 

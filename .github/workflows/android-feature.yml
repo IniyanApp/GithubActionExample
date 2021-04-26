@@ -1,7 +1,7 @@
 name: Android Feature
 on:
   push:
-    branches: [ master, release/* ]
+    branches: [ master, release/*, test_product_flavour ]
   pull_request:
     branches: [ master, release/* ]
 
@@ -32,57 +32,56 @@ jobs:
         uses: actions/upload-artifact@v2.2.1
         with:
           name: App
-          path: app/build/outputs/apk/debug/com.iniyan.githubactionexample-1.0.1-debug.apk
-
+          path: app/build/outputs/apk/android/debug/com.iniyan.githubactionexample-1.0.1-android-debug.apk
 #      - name: Upload APK
 #        uses: actions/upload-artifact@v2
 #        with:
 #          name: Application Apk
 #          path: ${{ github.workspace }}/app/build/outputs/apk/debug/com.iniyan.githubactionexample-1.0.1-debug.apk
 
-      - name: Running build command
-        run: ./gradlew bundleRelease
-      - name: Uploading build
-        uses: actions/upload-artifact@v2
-        with:
-          name: bundle
-          path: app/build/outputs/bundle/release/com.iniyan.githubactionexample-1.0.1-release.aab
+#      - name: Running build command
+#        run: ./gradlew bundleRelease
+#      - name: Uploading build
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: bundle
+#          path: app/build/outputs/bundle/release/com.iniyan.githubactionexample-1.0.1-release.aab
+
+#
+#      - name: Decode google-services.json
+#        env:
+#          FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+#        run: echo $FIREBASE_CONFIG > app/google-services.json
+#      # Step to Install the NDK
+#      - name: Install NDK
+#        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570"
+#      # Step to Build the Project and generate the APK
+#      - name: build debug apk
+#        run: ./gradlew assembleDebug
+#
+#      - name: build release
+#        run: ./gradlew assembleRelease
+#      - name: upload artifact to Firebase App Distribution
+#        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
+#        with:
+#          appId: ${{ secrets.FIREBASE_APP_ID }}
+#          token: ${{ secrets.FIREBASE_TOKEN }}
+#          groups: testers
+#          file: app/build/outputs/apk/release/com.iniyan.githubactionexample-1.0.1-release-unsigned.apk
 
 
-      - name: Decode google-services.json
-        env:
-          FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-        run: echo $FIREBASE_CONFIG > app/google-services.json
-      # Step to Install the NDK
-      - name: Install NDK
-        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570"
-      # Step to Build the Project and generate the APK
-      - name: build debug apk
-        run: ./gradlew assembleDebug
-
-      - name: build release
-        run: ./gradlew assembleRelease
-      - name: upload artifact to Firebase App Distribution
-        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
-        with:
-          appId: ${{ secrets.FIREBASE_APP_ID }}
-          token: ${{ secrets.FIREBASE_TOKEN }}
-          groups: testers
-          file: app/build/outputs/apk/release/com.iniyan.githubactionexample-1.0.1-release-unsigned.apk
-
-
-      - uses: r0adkll/sign-android-release@v1
-        name: Sign app APK
-        id: sign_app
-        with:
-          releaseDirectory: app/build/outputs/apk/release
-          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-          alias: ${{ secrets.ALIAS }}
-          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-          keyPassword: ${{ secrets.KEY_PASSWORD }}
-        env:
-          BUILD_TOOLS_VERSION: "29.0.1"
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Signed app bundle
-          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+#      - uses: r0adkll/sign-android-release@v1
+#        name: Sign app APK
+#        id: sign_app
+#        with:
+#          releaseDirectory: app/build/outputs/apk/release
+#          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+#          alias: ${{ secrets.ALIAS }}
+#          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+#          keyPassword: ${{ secrets.KEY_PASSWORD }}
+#        env:
+#          BUILD_TOOLS_VERSION: "29.0.1"
+#      - uses: actions/upload-artifact@v2
+#        with:
+#          name: Signed app bundle
+#          path: ${{steps.sign_app.outputs.signedReleaseFile}}

@@ -19,20 +19,6 @@ jobs:
       - name: Install NDK
         run: echo "y" | sudo /usr/local/lib/android/sdk/tools/bin/sdkmanager --install "ndk;20.0.5594570" --sdk_root=${ANDROID_SDK_ROOT}
 
-#       - name: Decode Secrets to Create local properties file
-#         env:
-#           BASEURL: ${{ secrets.BASEURL }}
-#         run: echo BASEURL="$BASEURL" > ./local.properties
-#       - run: echo hvsdkAccessKey=${{ secrets.hvsdkAccessKey }} >> local.properties
-#       - run: echo hvsdkSecretKey=${{ secrets.hvsdkSecretKey }} >> local.properties
-#       - run: echo VkycUserName=${{ secrets.VkycUserName }} >> local.properties
-#       - run: echo vkycPassword=${{ secrets.vkycPassword }} >> local.properties
-#       - run: echo AWS_MAVEN_URL=${{ secrets.AWS_MAVEN_URL }} >> local.properties
-#       - run: echo AWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY }} >> local.properties
-#       - run: echo AWS_SECRET_KEY=${{ secrets.AWS_SECRET_KEY }} >> local.properties
-#       - run: echo DIGITAP_REPO_URL=${{ secrets.DIGITAP_REPO_URL }} >> local.properties
-#       - run: echo DIGITAP_ACCESS_KEY=${{ secrets.DIGITAP_ACCESS_KEY }} >> local.properties
-#       - run: echo DIGITAP_SECRET_KEY=${{ secrets.DIGITAP_SECRET_KEY }} >> local.properties
 
       - name: Restore Cache
         uses: actions/cache@v2
@@ -65,17 +51,17 @@ jobs:
           name: App
           path: app/build/outputs/apk/android/debug/com.iniyan.githubactionexample-1.0.1-android-debug.apk
 
-
-        ## Build all our Build Types at once ##
-      - name: Build all artifacts
-        id: buildAllApks
-        uses: eskatos/gradle-command-action@v1.3.3
-        with:
-          gradle-version: current
-          wrapper-cache-enabled: true
-          dependencies-cache-enabled: true
-          configuration-cache-enabled: true
-          arguments: assembleAndroidDebug
+#
+#        ## Build all our Build Types at once ##
+#      - name: Build all artifacts
+#        id: buildAllApks
+#        uses: eskatos/gradle-command-action@v1.3.3
+#        with:
+#          gradle-version: current
+#          wrapper-cache-enabled: true
+#          dependencies-cache-enabled: true
+#          configuration-cache-enabled: true
+#          arguments: assembleAndroidDebug
 
 #      - name: Upload APK
 #        uses: actions/upload-artifact@v2
@@ -91,41 +77,41 @@ jobs:
 #          name: bundle
 #          path: app/build/outputs/bundle/release/com.iniyan.githubactionexample-1.0.1-release.aab
 
-#
-#      - name: Decode google-services.json
-#        env:
-#          FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-#        run: echo $FIREBASE_CONFIG > app/google-services.json
-#      # Step to Install the NDK
-#      - name: Install NDK
-#        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570"
-#      # Step to Build the Project and generate the APK
-#      - name: build debug apk
-#        run: ./gradlew assembleDebug
-#
-#      - name: build release
-#        run: ./gradlew assembleRelease
-#      - name: upload artifact to Firebase App Distribution
-#        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
-#        with:
-#          appId: ${{ secrets.FIREBASE_APP_ID }}
-#          token: ${{ secrets.FIREBASE_TOKEN }}
-#          groups: testers
-#          file: app/build/outputs/apk/release/com.iniyan.githubactionexample-1.0.1-release-unsigned.apk
+
+      - name: Decode google-services.json
+        env:
+          FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+        run: echo $FIREBASE_CONFIG > app/google-services.json
+      # Step to Install the NDK
+      - name: Install NDK
+        run: echo "y" | sudo ${ANDROID_HOME}/tools/bin/sdkmanager --install "ndk;20.0.5594570"
+      # Step to Build the Project and generate the APK
+      - name: build debug apk
+        run: ./gradlew assembleDebug
+
+      - name: build release
+        run: ./gradlew assembleRelease
+      - name: upload artifact to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
+        with:
+          appId: ${{ secrets.FIREBASE_APP_ID }}
+          token: ${{ secrets.FIREBASE_TOKEN }}
+          groups: testers
+          file: app/build/outputs/apk/release/com.iniyan.githubactionexample-1.0.1-release-unsigned.apk
 
 
-#      - uses: r0adkll/sign-android-release@v1
-#        name: Sign app APK
-#        id: sign_app
-#        with:
-#          releaseDirectory: app/build/outputs/apk/release
-#          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-#          alias: ${{ secrets.ALIAS }}
-#          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-#          keyPassword: ${{ secrets.KEY_PASSWORD }}
-#        env:
-#          BUILD_TOOLS_VERSION: "29.0.1"
-#      - uses: actions/upload-artifact@v2
-#        with:
-#          name: Signed app bundle
-#          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+      - uses: r0adkll/sign-android-release@v1
+        name: Sign app APK
+        id: sign_app
+        with:
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+        env:
+          BUILD_TOOLS_VERSION: "29.0.1"
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Signed app bundle
+          path: ${{steps.sign_app.outputs.signedReleaseFile}}

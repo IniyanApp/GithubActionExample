@@ -54,16 +54,27 @@ jobs:
       - name: build debug apk
         run: ./gradlew assembleDebug
 
-      - name: build release
-        run: ./gradlew assembleRelease
+#      - name: build release
+#        run: ./gradlew assembleRelease
+#      - name: upload artifact to Firebase App Distribution
+#        uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
+#        with:
+#          appId: ${{ secrets.FIREBASE_APP_ID }}
+#          token: ${{ secrets.FIREBASE_TOKEN }}
+#          groups: testers
+#          file: app/build/outputs/apk/release/app-release-unsigned.apk
+
+      # Step to Build the Project and generate the APK
+      - name: build debug apk
+        run: ./gradlew assembleDebug
+      # Step to Submit the generated APK to Firebase App Distribution
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.2.1
         with:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           token: ${{ secrets.FIREBASE_TOKEN }}
           groups: testers
-          file: app/build/outputs/apk/release/app-release-unsigned.apk
-
+          file: app/build/outputs/apk/debug/app-debug.apk
 
       - uses: r0adkll/sign-android-release@v1
         name: Sign app APK

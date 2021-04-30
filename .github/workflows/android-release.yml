@@ -49,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Application Apk
-          path: ${{ github.workspace }}/app/build/outputs/apk/debug/com.iniyan.githubactionexample-1.0.1-debug.apk
+          path: ${{ github.workspace }}/app/build/outputs/apk/debug/**.apk
 
 #
 #      ## Build all our Build Types at once ##

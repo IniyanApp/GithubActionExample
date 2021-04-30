@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v2.2.1
         with:
           name: App
-          path: app/build/outputs/apk/debug/com.iniyan.githubactionexample-1.0.1-debug.apk
+          path: app/build/outputs/apk/debug/**.apk
 
 #      - name: Upload APK
 #        uses: actions/upload-artifact@v2
@@ -46,7 +46,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: bundle
-          path: app/build/outputs/bundle/release/com.iniyan.githubactionexample-1.0.1-release.aab
+          path: app/build/outputs/bundle/release/**.aab
 
 
       - name: Decode google-services.json
@@ -68,7 +68,7 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           token: ${{ secrets.FIREBASE_TOKEN }}
           groups: testers
-          file: app/build/outputs/apk/release/com.iniyan.githubactionexample-1.0.1-release-unsigned.apk
+          file: app/build/outputs/apk/release/**.apk
 
 
       - uses: r0adkll/sign-android-release@v1
@@ -86,3 +86,4 @@ jobs:
         with:
           name: Signed app bundle
           path: ${{steps.sign_app.outputs.signedReleaseFile}}
+

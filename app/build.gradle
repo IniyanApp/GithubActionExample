@@ -14,14 +14,14 @@ sonarqube {
 }
 
 android {
-    signingConfigs {
-        release {
-            storeFile file('/home/iniyanm/Documents/demo.jks')
-            storePassword 'iniyan@123'
-            keyAlias 'iniyan'
-            keyPassword 'iniyan@123'
-        }
-    }
+//    signingConfigs {
+//        release {
+//            storeFile file('/home/iniyanm/Documents/demo.jks')
+//            storePassword 'iniyan@123'
+//            keyAlias 'iniyan'
+//            keyPassword 'iniyan@123'
+//        }
+//    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
     defaultConfig {

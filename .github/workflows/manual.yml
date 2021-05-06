@@ -53,7 +53,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Make Gradle executable
+      # Permission
+      - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
 
 #
@@ -67,8 +68,10 @@ jobs:
         run: |
           bash update_properties.sh ${{ github.event.inputs.baseUrl }} ${{ github.event.inputs.apiUrl }} ${{ github.event.inputs.gateway }} ${{ github.event.inputs.appType }}
 
-      - name: Assemble app debug APK
-        run: bash ./gradlew assembleDebug --stacktrace
+
+      # Build Gradlew
+      - name: Build with Gradle
+        run: ./gradlew build
 
       - name: Upload app APK
         uses: actions/upload-artifact@v1

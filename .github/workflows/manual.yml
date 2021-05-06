@@ -65,7 +65,7 @@ jobs:
 
       - name: Print Params Values
         run: |
-          bash update_properties.sh ${{ github.event.inputs.baseUrl }} ${{ github.event.inputs.apiUrl }} ${{ github.event.inputs.gateway }} ${{ github.event.inputs.appType }}
+          bash '/GithubActionExample/update_properties.sh' ${{ github.event.inputs.baseUrl }} ${{ github.event.inputs.apiUrl }} ${{ github.event.inputs.gateway }} ${{ github.event.inputs.appType }}
       - name: Assemble app debug APK
         run: bash ./gradlew assembleDebug --stacktrace
 

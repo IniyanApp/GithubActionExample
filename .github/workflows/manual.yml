@@ -56,16 +56,15 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
+      - name: Decode Secrets to Create local properties file
+          env:
+            BASEURL: ${{ secrets.BASEURL }}
+          run: echo BASEURL="$BASEURL" > ./local.properties
+            - run: echo baseUrl= ${{ github.event.inputs.baseUrl }} >> local.properties
+            - run: echo apiUrl= ${{ github.event.inputs.apiUrl }} >> local.properties
+            - run: echo gateway= ${{ github.event.inputs.gateway }} >> local.properties
+            - run: echo appType= ${{ github.event.inputs.appType }} >> local.properties
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
-        with:
-          name: KB Custom Generation Apk
-          path: ${{ github.workspace }}/app/build/outputs/apk/*/*/**.apk
-
-      - name: Print Params Values
-        run: |
-          bash '/GithubActionExample/update_properties.sh' ${{ github.event.inputs.baseUrl }} ${{ github.event.inputs.apiUrl }} ${{ github.event.inputs.gateway }} ${{ github.event.inputs.appType }}
       - name: Assemble app debug APK
         run: bash ./gradlew assembleDebug --stacktrace
 

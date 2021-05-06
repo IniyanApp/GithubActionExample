@@ -56,7 +56,7 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
-      - name: Decode Secrets to Create local properties file
+     
       - run: echo hvsdkAccessKey=${{ github.event.inputs.baseUrl }} >> local.properties
       - run: echo hvsdkSecretKey=${{ github.event.inputs.apiUrl }} >> local.properties
       - run: echo VkycUserName=${{ github.event.inputs.gateway }} >> local.properties

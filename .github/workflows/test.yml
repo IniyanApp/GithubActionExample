@@ -74,6 +74,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Analyze with SonarCloud
+        uses: sonarsource/sonarcloud-github-action@v1.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
   package:
     needs: [static-code-analysis]
     name: Generate APK

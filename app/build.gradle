@@ -35,12 +35,17 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        def baseUrl = localProperties['baseUrl']
-        buildConfigField "String","baseUrl","\"$baseUrl\""
-        def apiUrl = localProperties['apiUrl']
-        buildConfigField "String","apiUrl","\"$apiUrl\""
-        def gateway = localProperties['gateway']
-        buildConfigField "String","gateway","\"$gateway\""
+//        def baseUrl = localProperties['baseUrl']
+//        buildConfigField "String","baseUrl","\"$baseUrl\""
+//        def apiUrl = localProperties['apiUrl']
+//        buildConfigField "String","apiUrl","\"$apiUrl\""
+
+        buildConfigField("String", "baseUrl", localProperties['baseUrl'])
+        buildConfigField("String", "apiUrl", localProperties['apiUrl'])
+//        buildConfigField("int", "APP_RETRY_ATTEMPTS", localProperties['RETRY_ATTEMPTS'])
+//        buildConfigField("float", "APP_THRESHOLD_VALUE", localProperties['THRESHOLD_VALUE'])
+//        def gateway = localProperties['gateway']
+//        buildConfigField "String","gateway","\"$gateway\""
     }
 
     buildTypes {

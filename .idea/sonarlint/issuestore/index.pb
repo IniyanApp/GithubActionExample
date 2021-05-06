@@ -33,3 +33,11 @@ X
 (.github/workflows/notify_pr_approval.yml,f/8/f884f02d965c6f946c69a6c7fcf014e40a638d0c
 J
 .github/workflows/test.yml,7/c/7ceee5d954a74b8640cc2bfd6c27b8fdf07d7045
+R
+".github/workflows/slack-notify.yml,1/7/179b1cee8d55cf2928cb6801d1daca59bce63f23
+W
+'.github/workflows/greet_contributor.yml,b/3/b31365f5f05324d1e1ceb5e320584a97b83b90d4
+L
+.github/workflows/manual.yml,4/b/4b8702ea085b8c67e0589be782da918419fdb320
+Y
+).github/workflows/dependencies_report.yml,c/c/cc14d7e8963359ceb70342ac21c8d9c6f4e15c59

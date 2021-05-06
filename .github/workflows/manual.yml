@@ -57,8 +57,8 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Decode Secrets to Create local properties file
-          env:
-            BASEURL: ${{ secrets.BASEURL }}
+        env:
+          BASEURL: ${{ secrets.BASEURL }}
           run: echo BASEURL="$BASEURL" > ./local.properties
             - run: echo baseUrl= ${{ github.event.inputs.baseUrl }} >> local.properties
             - run: echo apiUrl= ${{ github.event.inputs.apiUrl }} >> local.properties

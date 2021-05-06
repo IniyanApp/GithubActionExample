@@ -56,12 +56,16 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
-     
-      - run: echo hvsdkAccessKey=${{ github.event.inputs.baseUrl }} >> local.properties
-      - run: echo hvsdkSecretKey=${{ github.event.inputs.apiUrl }} >> local.properties
-      - run: echo VkycUserName=${{ github.event.inputs.gateway }} >> local.properties
-      - run: echo vkycPassword=${{ github.event.inputs.appType }} >> local.properties
+#
+#      - run: echo hvsdkAccessKey=${{ github.event.inputs.baseUrl }} >> local.properties
+#      - run: echo hvsdkSecretKey=${{ github.event.inputs.apiUrl }} >> local.properties
+#      - run: echo VkycUserName=${{ github.event.inputs.gateway }} >> local.properties
+#      - run: echo vkycPassword=${{ github.event.inputs.appType }} >> local.properties
+#
 
+      - name: Print Params Values
+        run: |
+          bash update_properties.sh ${{ github.event.inputs.baseUrl }} ${{ github.event.inputs.apiUrl }} ${{ github.event.inputs.gateway }} ${{ github.event.inputs.appType }}
 
       - name: Assemble app debug APK
         run: bash ./gradlew assembleDebug --stacktrace

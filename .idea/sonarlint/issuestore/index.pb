@@ -41,3 +41,10 @@ L
 .github/workflows/manual.yml,4/b/4b8702ea085b8c67e0589be782da918419fdb320
 Y
 ).github/workflows/dependencies_report.yml,c/c/cc14d7e8963359ceb70342ac21c8d9c6f4e15c59
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+>
+manual_apk.yml,5/b/5b9e86513570abf79d60d95405962b70a8da4584
+p
+@app/src/main/java/com/iniyan/githubactionexample/MainActivity.kt,6/2/628916d6d5177459b2f8578e6b4daa90c6fc7510

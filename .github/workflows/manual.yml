@@ -1,9 +1,9 @@
 name: Manual Generate APK
 on:
   push:
-    branches: [ '*_CI' ]
+    branches: [ 'master' ]
   pull_request:
-    branches: [ '*_CI' ]
+    branches: [ 'master' ]
   workflow_dispatch:
 
     inputs:

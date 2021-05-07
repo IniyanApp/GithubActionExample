@@ -48,3 +48,5 @@ p
 @app/src/main/java/com/iniyan/githubactionexample/MainActivity.kt,6/2/628916d6d5177459b2f8578e6b4daa90c6fc7510
 D
 update_properties.sh,9/2/92bdceccc91068a15db69be91f3cceb61cf900fa
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e

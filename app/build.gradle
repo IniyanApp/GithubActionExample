@@ -40,8 +40,8 @@ android {
 //        def apiUrl = localProperties['apiUrl']
 //        buildConfigField "String","apiUrl","\"$apiUrl\""
 
-        buildConfigField("String", "baseUrl", localProperties['baseUrl'])
-        buildConfigField("String", "apiUrl", localProperties['apiUrl'])
+        buildConfigField("String", "BASE_URL", localProperties['BASE_URL'])
+        buildConfigField("String", "API_URL", localProperties['API_URL'])
 //        buildConfigField("int", "APP_RETRY_ATTEMPTS", localProperties['RETRY_ATTEMPTS'])
 //        buildConfigField("float", "APP_THRESHOLD_VALUE", localProperties['THRESHOLD_VALUE'])
 //        def gateway = localProperties['gateway']

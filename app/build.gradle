@@ -1,52 +1,32 @@
-
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
-
     id "org.sonarqube" version "3.1.1"
 }
-//    id 'jacoco-android'
 sonarqube {
     properties {
+        property 'sonar.projectName', 'SonarQube Scanner for Gradle'
         property "sonar.projectKey", "IniyanApp_GithubActionExample"
         property "sonar.organization", "iniyanapp"
         property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.projectVersion", "1.0"
-        property "sonar.exclusions", "robospice/**/*"
-//        property "sonar.host.url", "http://192.168.0.1:9000" // TODO: - Setup your Sonarqube server address
-
-//        property "sonar.sources", "src/main/java"
-//        property "sonar.binaries", "build/intermediates/classes/debug"
-//        property "sonar.java.binaries", "build/intermediates/classes/debug"
-//        property "sonar.tests", "src/test/java, src/androidTest/java"
-//        property "sonar.java.test.binaries", "build/intermediates/classes/debug"
-//
-//        def unit = fileTree(dir: project.projectDir, includes: ['**/*.exec']).files;
-//        def ui = fileTree(dir: project.projectDir, includes: ['**/*.ec']).files;
-//        unit.addAll(ui);
-//        def files = unit.join(", ");
-//
-//        property "sonar.jacoco.reportPaths", files
-//        property "sonar.java.coveragePlugin", "jacoco"
-//        property "sonar.junit.reportsPath", "build/test-results/testDebugUnitTest"
-//        property "sonar.android.lint.report", "build/reports/lint-results.xml"
     }
 }
 
+//def localProperties = new Properties()
+//localProperties.load(new FileInputStream(rootProject.file("local.properties")))
 
 android {
-    signingConfigs {
-        release {
-            storeFile file('/home/iniyanm/Documents/demo.jks')
-            storePassword 'iniyan@123'
-            keyAlias 'iniyan'
-            keyPassword 'iniyan@123'
-        }
-    }
+//    signingConfigs {
+//        release {
+//            storeFile file('/home/iniyanm/Documents/demo.jks')
+//            storePassword 'iniyan@123'
+//            keyAlias 'iniyan'
+//            keyPassword 'iniyan@123'
+//        }
+//    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
-
     defaultConfig {
         applicationId "com.iniyan.githubactionexample"
         minSdkVersion 21
@@ -55,20 +35,23 @@ android {
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        def baseUrl = localProperties['baseUrl']
+//        buildConfigField "String","baseUrl","\"$baseUrl\""
+//        def apiUrl = localProperties['apiUrl']
+//        buildConfigField "String","apiUrl","\"$apiUrl\""
+
+//        buildConfigField("String", "BASE_URL", localProperties['BASE_URL'])
+//        buildConfigField("String", "API_URL", localProperties['API_URL'])
+//        buildConfigField("int", "APP_RETRY_ATTEMPTS", localProperties['RETRY_ATTEMPTS'])
+//        buildConfigField("float", "APP_THRESHOLD_VALUE", localProperties['THRESHOLD_VALUE'])
+//        def gateway = localProperties['gateway']
+//        buildConfigField "String","gateway","\"$gateway\""
     }
 
     buildTypes {
-
         release {
-          //  resValue("string", "ztm_api_key", System.getenv("ZTM_API_KEY").toString())
-            minifyEnabled true
-            testCoverageEnabled = true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-
-        }
-
-        debug {
-            testCoverageEnabled = true
         }
     }
     compileOptions {
@@ -78,58 +61,25 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-
-    testOptions {
-        unitTests.all {
-            jacoco {
-                includeNoLocationClasses = true
-            }
-        }
-    }
 }
-
-
-
 
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // Add the dependency for the Firebase SDK for Google Analytics
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation 'com.google.firebase:firebase-analytics'
-
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:26.1.1')
-
     testImplementation 'org.mockito:mockito-core:2.23.0'
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
-
     androidTestImplementation 'org.mockito:mockito-android:2.23.0'
-
-
-
 }
-
-//
-//// TODO: Setup Jacoco version. It's recomended way to exclude conflicts beetwen components
-//
-//jacoco {
-//    toolVersion = "0.7.4.201502262128"
-//}
-//
-//// TODO: Setup jacoco report format. We need xml for Sonarqube
-//
-//jacocoAndroidUnitTestReport {
-//    csv.enabled false
-//    html.enabled false
-//    xml.enabled true
-//}

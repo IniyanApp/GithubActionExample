@@ -10,5 +10,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 //        findViewById<TextView>(R.id.text).text = BASE_URL
 //        Log.e("tag","BaseURL $BASE_URL")
+
     }
 }
